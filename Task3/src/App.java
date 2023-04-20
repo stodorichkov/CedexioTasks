@@ -1,6 +1,6 @@
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 /*
 Task condition: 
@@ -12,15 +12,15 @@ Task condition:
 
 /*
 Task solution:
-    Create set with letters common to both words and from sum of lengths of the two words I will 
-    take out 2 * length of set to find how letters he need to remove.
+    Create list with letters common to both words and from sum of lengths of the two words I will 
+    take out 2 * length of list to find how letters he need to remove.
 */
 
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // set with common letters
-        Set<Character> commonLetters = new HashSet<>();
+        // list with common letters
+        List<Character> commonLetters = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -34,11 +34,21 @@ public class App {
 
         // fill set with common letters
         for(Character letter : word1.toCharArray()) {
-            if(word2.contains(letter.toString())) {
-                commonLetters.add(letter);
+            if(word2.contains(letter.toString()) && !commonLetters.contains(letter)) {
+                // get count of specific letter in word1 and word2
+                long countInWord1 = word1.chars().filter(c -> c == letter).count();
+                long countInWord2 = word2.chars().filter(c -> c == letter).count();
+
+                // get min of countInWord1 and countInWord2
+                long count = Math.min(countInWord1, countInWord2);
+
+                // add leletter in common letters
+                for(int i = 0; i < count; i++) {
+                    commonLetters.add(letter);
+                }
             }
         }
-
+        
         // print final result
         System.out.println("Count of letters he need to remove is " + (word1.length() + word2.length() - 2 * commonLetters.size()));
     }

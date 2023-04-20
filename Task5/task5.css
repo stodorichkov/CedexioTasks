@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-wrap: wrap;
+    padding: 1vh;
+    min-height: 98vh;
+}
+
+.part {
+    height: 15vh;
+    border-radius: 8px;
+}
+
+.short {
+    background-color: springgreen;
+    width: 30vw;
+}
+
+.long {
+    background-color: black;
+    width: 60vw;
+}
+
+.line1 {
+    background-image: linear-gradient(#732365 , #6e3070);
+}
+
+.line2{
+    background-image: linear-gradient(#663b7b , #5e4685);
+}
+
+.line3 {
+    background-image: linear-gradient(#544d90 , #485499);
+}
+
+.line4 {
+    background-image: linear-gradient(#3c59a3 , #305eab);
+}

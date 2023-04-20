@@ -20,7 +20,7 @@ Task solution:
 
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    private static Map<String, Integer> inputBox() {
         // create empty map with different colors balls
         Map<String, Integer> box = new HashMap<>();
 
@@ -47,9 +47,10 @@ public class App {
             }
         }
 
-        // print box
-        System.out.println("Balls: " + box);
-        
+        return box;
+    }
+
+    private static void countDrawnBalls(Map<String, Integer> box) {
         if(!box.isEmpty()) {
             // get count of all balls
             Integer ballsCount = 0;
@@ -62,5 +63,15 @@ public class App {
         else {
             System.out.println("Box is empty!");
         }
+    }
+    public static void main(String[] args) throws Exception {
+        //input box
+        Map<String, Integer> box = inputBox();
+
+        // print box
+        System.out.println("Balls: " + box);
+        
+        // smallest count of balls we must take out, so we are sure there is only one color left in the box
+        countDrawnBalls(box);
     }
 }

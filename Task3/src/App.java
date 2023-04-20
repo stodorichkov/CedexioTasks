@@ -18,21 +18,11 @@ Task solution:
 
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        // list with common letters
+    private static List<Character> findCommonLetters(String word1, String word2) {
+        // empty list to store common letters
         List<Character> commonLetters = new ArrayList<>();
 
-        Scanner scanner = new Scanner(System.in);
-
-        // iput first word
-        System.out.print("Enter first word: ");
-        String word1 = scanner.nextLine();
-
-        // input second word
-        System.out.print("Enter second word: ");
-        String word2 = scanner.nextLine();
-
-        // fill set with common letters
+        // fill list with common letters
         for(Character letter : word1.toCharArray()) {
             if(word2.contains(letter.toString()) && !commonLetters.contains(letter)) {
                 // get count of specific letter in word1 and word2
@@ -48,8 +38,28 @@ public class App {
                 }
             }
         }
-        
-        // print final result
-        System.out.println("Count of letters he need to remove is " + (word1.length() + word2.length() - 2 * commonLetters.size()));
+
+        return commonLetters;
+    }
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+
+        // iput first word
+        System.out.print("Enter first word: ");
+        String word1 = scanner.nextLine();
+
+        // input second word
+        System.out.print("Enter second word: ");
+        String word2 = scanner.nextLine();
+
+        // list with common letters
+        List<Character> commonLetters = findCommonLetters(word1, word2);
+
+        if(commonLetters.size() > 0) {
+            System.out.println("Count of letters he need to remove is " + (word1.length() + word2.length() - 2 * commonLetters.size()));
+        }
+        else {
+            System.out.println("The two word dont have similarity!");
+        }
     }
 }

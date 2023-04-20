@@ -9,7 +9,7 @@ public class SalesConsultant extends Worker {
 
     // method for sale product
     public void sellProduct(double price) {
-        this.moneyEarned += price;
+        this.moneyEarned += Math.max(price, 0);
     }
 
     // method for get earned money

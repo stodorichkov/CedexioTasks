@@ -13,6 +13,7 @@ public class MarketingSpecialist extends Worker {
 
     // method for spend budget
     public void spendBudget(double amount) {
+        amount = Math.max(amount, 0);
         if(budgetSpent + amount <= budgetLimit) {
             budgetSpent += amount;
         }
